@@ -24,7 +24,7 @@ $(function () {
             var json = {name: name, phone: phone, email: email, message: message}
             $.ajax({
                 // --- CHANGE THIS LINE TO YOUR OWN API GATEWAY  -------- 
-                url: "{Insert your own AWS API Gateway Endpoint URL here}",
+                url: "arn:aws:apigateway:eu-west-1::/apis/rmtnta4gpi/routes/dpq153p",
                 // ------------------------------------------------------  
                 type: "POST",
                 data: JSON.stringify(json),
