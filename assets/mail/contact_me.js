@@ -24,7 +24,7 @@ $(function () {
             var json = {name: name, phone: phone, email: email, message: message}
             $.ajax({
                 // --- CHANGE THIS LINE TO YOUR OWN API GATEWAY  -------- 
-                url: "arn:aws:apigateway:eu-west-1::/apis/f1kt5h4wt9/routes/a6n9xus",
+                url: "https://4x8o7gn6ql.execute-api.eu-west-1.amazonaws.com",
                 // ------------------------------------------------------  
                 type: "POST",
                 data: JSON.stringify(json),
