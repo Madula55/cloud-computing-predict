@@ -29,6 +29,9 @@ $(function () {
                 type: "POST",
                 mode: "cors",
                 crossDomain: true,
+                headers: {
+                    "Access-Control-Allow-Origin": "*"
+                },
                 data: JSON.stringify(json),
                 cache: false,
                 success: function () {
@@ -58,8 +61,8 @@ $(function () {
                     $("#success > .alert-danger").append(
                         $("<strong>").text(
                             "Sorry " +
-                                firstName +
-                                ", it seems that my mail server is not responding. Please try again later!"
+                            firstName +
+                            ", it seems that my mail server is not responding. Please try again later!"
                         )
                     );
                     $("#success > .alert-danger").append("</div>");
