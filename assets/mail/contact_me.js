@@ -27,7 +27,7 @@ $(function () {
                 url: "https://fd3f134z4k.execute-api.eu-west-1.amazonaws.com/stg/",
                 // ------------------------------------------------------  
                 type: "POST",
-                data: JSON.stringify(json),
+                data: JSON.stringify(jsonp),
                 cache: false,
                 success: function () {
                     // Success message
