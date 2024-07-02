@@ -27,10 +27,10 @@ $(function () {
                 url: "https://wy8bgugd4k.execute-api.eu-west-1.amazonaws.com/stg",
                 // ------------------------------------------------------  
                 type: "POST",
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                    // "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
-                },
+                // headers: {
+                //     "Access-Control-Allow-Origin": "*"
+                //     // "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+                // },
                 data: JSON.stringify(json),
                 cache: false,
                 success: function () {
