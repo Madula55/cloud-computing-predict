@@ -24,12 +24,12 @@ $(function () {
             var json = {name: name, phone: phone, email: email, message: message}
             $.ajax({
                 // --- CHANGE THIS LINE TO YOUR OWN API GATEWAY  -------- 
-                url: "https://fd3f134z4k.execute-api.eu-west-1.amazonaws.com/stg/",
+                url: "https://fd3f134z4k.execute-api.eu-west-1.amazonaws.com/stg",
                 // ------------------------------------------------------  
                 type: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "false"
+                    "Access-Control-Allow-Credentials": "true"
                 },
                 data: JSON.stringify(json),
                 cache: false,
