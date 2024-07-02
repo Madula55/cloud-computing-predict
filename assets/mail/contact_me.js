@@ -29,7 +29,7 @@ $(function () {
                 type: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "*"
+                    "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
                 },
                 data: JSON.stringify(json),
                 cache: false,
