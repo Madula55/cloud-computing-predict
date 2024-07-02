@@ -27,8 +27,6 @@ $(function () {
                 url: "https://fd3f134z4k.execute-api.eu-west-1.amazonaws.com/stg",
                 // ------------------------------------------------------  
                 type: "POST",
-                mode: "cors",
-                crossDomain: true,
                 headers: {
                     "Access-Control-Allow-Origin": "*"
                 },
