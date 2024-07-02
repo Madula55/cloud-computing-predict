@@ -10,6 +10,10 @@ $(function () {
             event.preventDefault(); // prevent default submit behaviour
             // get values from FORM
             console.log('Capturing Data')
+            var cors = require('cors');
+
+// use it before all route definitions
+            this.use(cors({origin: '*'}));
             var name = $("input#name").val();
             var email = $("input#email").val();
             var phone = $("input#phone").val();
