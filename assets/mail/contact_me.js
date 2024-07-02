@@ -28,6 +28,7 @@ $(function () {
                 // ------------------------------------------------------  
                 type: "POST",
                 mode: "cors",
+                crossDomain: true,
                 data: JSON.stringify(json),
                 cache: false,
                 success: function () {
