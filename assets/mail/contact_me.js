@@ -29,7 +29,7 @@ $(function () {
                 type: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Headers": "Content-Type"
+                    "Access-Control-Allow-Headers": "*"
                 },
                 data: JSON.stringify(json),
                 cache: false,
