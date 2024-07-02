@@ -27,8 +27,8 @@ $(function () {
                 url: "https://fd3f134z4k.execute-api.eu-west-1.amazonaws.com/stg/",
                 // ------------------------------------------------------  
                 type: "POST",
+                mode: "cors",
                 data: JSON.stringify(json),
-                cors:true,
                 cache: false,
                 success: function () {
                     // Success message
