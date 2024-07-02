@@ -28,7 +28,8 @@ $(function () {
                 // ------------------------------------------------------  
                 type: "POST",
                 headers: {
-                    "Access-Control-Allow-Origin": "*"
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Credentials": "true"
                 },
                 data: JSON.stringify(json),
                 cache: false,
