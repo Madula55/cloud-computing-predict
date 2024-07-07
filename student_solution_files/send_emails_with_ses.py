@@ -19,28 +19,28 @@ import json     # Used for handling API-based data.
 import base64   # Needed to decode the incoming POST data
 from botocore.exceptions import ClientError # Catch errors on client side
 
-def lambda_handler(event, context):
+def lambda_handler_ses(event, context):
     
     # Perform JSON data decoding 
-    body_enc = event['body']
-    dec_dict = json.loads(base64.b64decode(body_enc))
+    body_enc = event
+    dec_dict = event
 
     # Sample text that you would like to email to your recipient 
     # address from your sender address.
-    email_text = 'Insert your sample email here'
+    email_text = event['message']
 
     # ** SES Functionality **
 
     # Replace sender@example.com with your "From" address.
     # This address must be verified with Amazon SES.
     # --- Insert your code here ---
-    SENDER = 'sender@example.com'
+    SENDER = 'andani.alex@gmail.com'
     # -----------------------------
 
     # Replace recipient@example.com with a "To" address. If your account 
     # is still in the sandbox, this address must be verified.
     # --- Insert your code here ---
-    RECIPIENT = 'recipient@example.com' 
+    RECIPIENT = 'andani.alex@gmail.com'
     # -----------------------------
 
 

@@ -23,27 +23,35 @@ import numpy as np # Array manipulation
 
 # ** Insert key phrases function **
 # --- Insert your code here ---
-
+from student_solution_files.find_key_phrases import key_phrase_finder
 # -----------------------------
 
 # ** Insert sentiment extraction function **
 # --- Insert your code here ---
- 
+from student_solution_files.find_maximum_sentiment import find_max_sentiment
 # -----------------------------
 
 # ** Insert email responses function **
 # --- Insert your code here ---
- 
+from email_responses import email_response
+from send_emails_with_ses import lambda_handler_ses
+
 # -----------------------------
 
 # Lambda function orchestrating the entire predict logic
+# create a DynamoDB object using the AWS SDK
+dynamodb = boto3.resource('dynamodb')
+# use the DynamoDB object to select our table
+table = dynamodb.Table('my-portfolio-data-table')
+
+
 def lambda_handler(event, context):
     
     # Perform JSON data decoding 
-    body_enc = event['body']
-    dec_dict = json.loads(base64.b64decode(body_enc))
+    # body_enc = event['body']
+    # dec_dict = json.loads(base64.b64decode(body_enc))
     
-
+    dec_dict = event
     # ** Insert code to write to dynamodb **
     # <<< Ensure that the DynamoDB write response object is saved 
     #    as the variable `db_response` >>> 
@@ -51,7 +59,13 @@ def lambda_handler(event, context):
 
 
     # Do not change the name of this variable
-    db_response = None
+    db_response = table.put_item(
+        Item={ "ResponsesID":12548,
+        'Name': dec_dict['name'],
+        'Email': dec_dict['email'],
+        'Cell': dec_dict['phone'],
+        'Message': dec_dict['message']})
+
     # -----------------------------
     
 
@@ -59,17 +73,17 @@ def lambda_handler(event, context):
     comprehend = boto3.client(service_name='comprehend')
     
     # --- Insert your code here ---
-    enquiry_text = None # <--- Insert code to place the website message into this variable
+    enquiry_text = event['message'] # <--- Insert code to place the website message into this variable
     # -----------------------------
     
     # --- Insert your code here ---
-    sentiment = None # <---Insert code to get the sentiment with AWS comprehend
+    sentiment = json.dumps(comprehend.detect_sentiment(Text=enquiry_text, LanguageCode='en'), sort_keys=True, indent=4) # <---Insert code to get the sentiment with AWS comprehend
     # -----------------------------
     
     # --- Insert your code here ---
-    key_phrases = None # <--- Insert code to get the key phrases with AWS comprehend
+    key_phrases = json.dumps(comprehend.detect_key_phrases(Text=enquiry_text, LanguageCode='en'), sort_keys=True, indent=4) # <--- Insert code to get the key phrases with AWS comprehend
     # -----------------------------
-    
+    # key_phrases.
     # Get list of phrases in numpy array
     phrase = []
     for i in range(0, len(key_phrases['KeyPhrases'])-1):
@@ -80,7 +94,7 @@ def lambda_handler(event, context):
     # <<< Ensure that the response text is stored in the variable `email_text` >>> 
     # --- Insert your code here ---
     # Do not change the name of this variable
-    email_text = None 
+    email_text = email_response(event['name'],phrase,sentiment)
 
     
     # -----------------------------
@@ -94,7 +108,7 @@ def lambda_handler(event, context):
     # --- Insert your code here ---
 
     # Do not change the name of this variable
-    ses_response = None
+    ses_response = lambda_handler_ses(event,context)
     
     # ...
 
